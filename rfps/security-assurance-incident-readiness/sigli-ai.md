@@ -6,8 +6,8 @@
 | Author / Primary Contact | Ayan Uali (@ayanuali) |
 | Champion | 5North |
 | Proposal Type | RFP-aligned proposal |
-| Primary RFP | **#22 Daml Security Standards and Secure Development** (Security, Assurance & Incident Readiness) |
-| Secondary RFP areas | #18 Integration into SDLCs; #27 Security Monitoring, Auditability and Evidence |
+| Primary RFP | **RFP 22 Daml Security Standards and Secure Development** (Security, Assurance & Incident Readiness) |
+| Secondary RFP areas | RFP 18 Integration into SDLCs; RFP 27 Security Monitoring, Auditability and Evidence |
 | SIG | daml-tooling |
 | Total Funding Request | 487,000 CC |
 | Project Duration | 16 weeks build + 10-week adoption window (6 months total) |
@@ -17,11 +17,11 @@
 
 ## RFP Alignment
 
-DAWE responds to **RFP #22, Daml Security Standards and Secure Development**, in the *Security, Assurance & Incident Readiness* area of the [2026-2028 Strategic Roadmap](https://github.com/canton-foundation/canton-dev-fund/blob/main/2026-2028-strategic-roadmap.md#requests-for-proposals).
+DAWE responds to **RFP 22, Daml Security Standards and Secure Development**, in the *Security, Assurance & Incident Readiness* area of the [2026-2028 Strategic Roadmap](https://github.com/canton-foundation/canton-dev-fund/blob/main/2026-2028-strategic-roadmap.md#requests-for-proposals).
 
-RFP #22 asks for "security standards, best practices, tooling, and reference materials for the secure design, development, testing, and deployment of Daml applications", and states the goal: to help application developers "consistently identify and prevent security weaknesses before Daml packages are deployed or vetted." DAWE is scoped to that goal. The table maps each item the RFP lists to what this grant delivers.
+RFP 22 asks for "security standards, best practices, tooling, and reference materials for the secure design, development, testing, and deployment of Daml applications", and states the goal: to help application developers "consistently identify and prevent security weaknesses before Daml packages are deployed or vetted." DAWE is scoped to that goal. The table maps each RFP item in DAWE's scope to what this grant delivers. Security-focused linting and static analysis are left to static tools such as the CCTools package analyzer, which DAWE complements (see below).
 
-| RFP #22 item | DAWE deliverable | Milestone |
+| RFP 22 item | DAWE deliverable | Milestone |
 |---|---|---|
 | Testing methodologies | The DAWE scenario convention: fixture setup, valid preceding submissions, one adversarial submission, post-rejection state assertions. Built on `submitMustFail` and Splice's checked variants. | M1 |
 | Common vulnerability patterns | The Daml Security Pattern catalogue (DSP-01 to DSP-10, below). Each pattern has a description, a vulnerable example, a fixed example, and at least one reference scenario that catches it. | M1 (first 5), M2 (all 10) |
@@ -32,14 +32,14 @@ RFP #22 asks for "security standards, best practices, tooling, and reference mat
 | Automated analysis | A regression runner that re-executes all suites against a named SDK version and reports which scenarios changed behaviour | M2 |
 
 **Secondary alignment.**
-- **RFP #18, Integration into SDLCs.** The runner and CI template put adversarial Daml testing into an existing CI/CD pipeline with no new infrastructure.
-- **RFP #27, Security Monitoring, Auditability and Evidence.** The run report (scenario IDs, expected and actual outcomes, SDK version, target environment, timestamps) is a compliance-evidence artifact that preserves Canton's privacy model: it is produced by the team from its own test ledger, and it discloses no production data.
+- **RFP 18, Integration into SDLCs.** The runner and CI template put adversarial Daml testing into an existing CI/CD pipeline with no new infrastructure.
+- **RFP 27, Security Monitoring, Auditability and Evidence.** The run report (scenario IDs, expected and actual outcomes, SDK version, target environment, timestamps) is a compliance-evidence artifact that preserves Canton's privacy model: it is produced by the team from its own test ledger, and it discloses no production data.
 - **Roadmap vision.** The roadmap states that "validator operators and users alike can easily evaluate applications." A public, standard evidence report attached to a package release gives a party deciding whether to vet a package something concrete to check.
 
 **Relationship to funded and proposed work.** DAWE is complementary to these and does not duplicate them:
-- **CCTools Daml package analyzer** (RFP #3, [2026-03 proposal](https://github.com/canton-foundation/canton-dev-fund/blob/main/proposals/2026-03-Certora-daml_package_analyzer_proposal%20.md)). That tool does static analysis of cross-package authority in a `.dar`. DAWE does dynamic, scenario-based testing of workflow behaviour on a running ledger. A reviewer uses the analyzer to find where authority crosses packages, and DAWE scenarios to show that the unauthorised exercise is actually rejected.
-- **Independent security assessments** (RFP #21, [PR #410](https://github.com/canton-foundation/canton-dev-fund/pull/410)). An audit is a point-in-time review. DAWE produces repeatable evidence a team can re-run on every release, and gives auditors a standard artifact to start from.
-- **Daml training** (RFP #15). The DAWE catalogue and tutorial are security-specific material that existing training programmes can link to.
+- **CCTools Daml package analyzer** (RFP 3, [2026-03 proposal](https://github.com/canton-foundation/canton-dev-fund/blob/main/proposals/2026-03-Certora-daml_package_analyzer_proposal%20.md)). That tool does static analysis of cross-package authority in a `.dar`. DAWE does dynamic, scenario-based testing of workflow behaviour on a running ledger. A reviewer uses the analyzer to find where authority crosses packages, and DAWE scenarios to show that the unauthorised exercise is actually rejected.
+- **Independent security assessments** (RFP 21, [PR #410](https://github.com/canton-foundation/canton-dev-fund/pull/410)). An audit is a point-in-time review. DAWE produces repeatable evidence a team can re-run on every release, and gives auditors a standard artifact to start from.
+- **Daml training** (RFP 15). The DAWE catalogue and tutorial are security-specific material that existing training programmes can link to.
 
 ---
 
